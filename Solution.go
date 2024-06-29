@@ -7,15 +7,15 @@ import (
 	"unicode"
 )
 
-var ALPHABET_SIZE = 26
+const ALPHABET_SIZE = 26
 
 func betterCompression(compressed string) string {
 	var frequency = createArrayFrequency(&compressed)
 	return createBetterCompression(&frequency)
 }
 
-func createArrayFrequency(compressed *string) []int {
-	frequency := make([]int, ALPHABET_SIZE)
+func createArrayFrequency(compressed *string) [ALPHABET_SIZE]int {
+	frequency := [ALPHABET_SIZE]int{}
 
 	for i := 0; i < len(*compressed); i++ {
 
@@ -32,7 +32,7 @@ func createArrayFrequency(compressed *string) []int {
 	return frequency
 }
 
-func createBetterCompression(frequency *[]int) string {
+func createBetterCompression(frequency *[ALPHABET_SIZE]int) string {
 	betterCompression := strings.Builder{}
 
 	for letter := 0; letter < ALPHABET_SIZE; letter++ {
